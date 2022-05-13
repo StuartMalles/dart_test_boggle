@@ -56,6 +56,7 @@ class Boggle {
         }
         
         // Even if the word is found, continue looking
+        // If wordPart not found, no reason to continue looking.
         if ((foundWord) || (!foundWord && containsWord(word))) {
           evaluated[r][c] = true;
 
