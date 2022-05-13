@@ -2,14 +2,14 @@
 // Note - No dictionary or board validation is included.
 
 void main() {
-  List<String> dictionary = [
+  const List<String> dictionary = [
     "GEEKS",
     "FOR",
     "QUIZ",
     "GO",
   ];
 
-  List<List<String>> board = [
+  const List<List<String>> board = [
     ["G", "I", "Z"],
     ["U", "E", "K"],
     ["Q", "S", "E"],
@@ -21,7 +21,7 @@ void main() {
 class Boggle {
   final List<String> dictionary;
   final List<List<String>> board;
-  List<String> foundWords = [];
+  final List<String> foundWords = [];
 
   List<List<bool>> resetEvaluation() {
     return List.generate(
@@ -47,9 +47,9 @@ class Boggle {
   void wordCheck(String wordPart, List<List<bool>> evaluated, int r, int c) {
     if (isValidCell(r, c)) {
       if (!evaluated[r][c]) {
-        String word = wordPart + board[r][c];
-
-        bool foundWord = isWord(word);
+        // Combine the wordPart with this letter and see if its in the dictionary.
+        final String word = wordPart + board[r][c];
+        final bool foundWord = isWord(word);
 
         if (foundWord) {
           foundWords.add(word);
@@ -96,4 +96,3 @@ class Boggle {
     print('Resuls : Found $foundWords');
   }
 }
-
